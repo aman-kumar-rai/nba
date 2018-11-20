@@ -4,7 +4,7 @@ const Sidebar = require("./Sidebar.js");
 const { getPlayers } = require("../api.js");
 const slug = require("slug");
 const { parse } = require("query-string");
-const Teams = require('./Teams.js');
+const Teams = require("./Teams.js");
 
 class Players extends React.Component {
   constructor(props) {
@@ -48,61 +48,73 @@ class Players extends React.Component {
 
     // {...props} is required cause this Players component is rendered by a Route which passes it match, location and history and we want to pass those to Sidebar as props...
     return (
-      <div id='players'>
-        
-        {
-          // displaying this component if the user has not selected any player
-          (loading === false && location.pathname==='/players')?
-          <p>Please select a player</p>:
-          null
-        }
-        
+      <div id="players">
+        {// displaying this component if the user has not selected any player
+        loading === false && location.pathname === "/players" ? (
+          <p>Please select a player</p>
+        ) : null}
+
         <Route
-          path={`${match.url}/:playerId`} 
-          
+          path={`${match.url}/:playerId`}
           // this match is different, it is props.match which is passed to this component by the Route component...
-          render={({match}) => {
-            if(loading === true){
+          render={({ match }) => {
+            if (loading === true) {
               return null;
             }
 
             // destructuring the details of the player...
             const {
-              name, position, teamId, number, avatar, apg, ppg, rpg, spg
-            } = players.find(function(player){
+              name,
+              position,
+              teamId,
+              number,
+              avatar,
+              apg,
+              ppg,
+              rpg,
+              spg
+            } = players.find(function(player) {
               return slug(player.name) === match.params.playerId;
-            })
+            });
 
             return (
-              <div>
-                <img className='avatar' src={avatar} alt={`${name}'s avatar`} />
-                <h1>{name}</h1>
-                <h3>#{number}</h3>
+              <div className="player">
+                <img className="avatar" src={avatar} alt={`${name}'s avatar`} />
+                <h1 className="player-name">{name}</h1>
+                <h3 className="player-number">#{number}</h3>
                 <div>
-                  <ul>
+                  <ul className='player-info'>
                     <li>
                       Team
                       <div>
-                        <Link style={{color: '#68809a'}} to={`/${teamId}`}>
+                        <Link style={{ color: "#68809a", textDecoration: 'none' }} to={`/${teamId}`}>
                           {teamId[0].toUpperCase() + teamId.slice(1)}
                         </Link>
                       </div>
                     </li>
-                    <li>Position<div>{position}</div></li>
-                    <li>PPG<div>{ppg}</div></li>
+                    <li>
+                      Position<div>{position}</div>
+                    </li>
                   </ul>
-                  <ul>
-                    <li>APG<div>{apg}</div></li>
-                    <li>SPG<div>{spg}</div></li>
-                    <li>RPG<div>{rpg}</div></li>
+                  <ul className='player-stats'>
+                    <li className='player-stats-topic'>
+                      PPG<div className='player-stats-data'>{ppg}</div>
+                    </li>
+                    <li className='player-stats-topic'>
+                      APG<div className='player-stats-data'>{apg}</div>
+                    </li>
+                    <li className='player-stats-topic'>
+                      SPG<div className='player-stats-data'>{spg}</div>
+                    </li> 
+                    <li className='player-stats-topic'>
+                      RPG<div className='player-stats-data'>{rpg}</div>
+                    </li>
                   </ul>
                 </div>
               </div>
             );
-
           }}
-        >
-        </Route>
+        />
 
         <Sidebar
           loading={loading}
