@@ -4,6 +4,7 @@ const Sidebar = require("./Sidebar.js");
 const { getPlayers } = require("../api.js");
 const slug = require("slug");
 const { parse } = require("query-string");
+const Teams = require('./Teams.js');
 
 class Players extends React.Component {
   constructor(props) {
@@ -55,7 +56,53 @@ class Players extends React.Component {
           <p>Please select a player</p>:
           null
         }
+        
+        <Route
+          path={`${match.url}/:playerId`} 
+          
+          // this match is different, it is props.match which is passed to this component by the Route component...
+          render={({match}) => {
+            if(loading === true){
+              return null;
+            }
 
+            // destructuring the details of the player...
+            const {
+              name, position, teamId, number, avatar, apg, ppg, rpg, spg
+            } = players.find(function(player){
+              return slug(player.name) === match.params.playerId;
+            })
+
+            return (
+              <div>
+                <img className='avatar' src={avatar} alt={`${name}'s avatar`} />
+                <h1>{name}</h1>
+                <h3>#{number}</h3>
+                <div>
+                  <ul>
+                    <li>
+                      Team
+                      <div>
+                        <Link style={{color: '#68809a'}} to={`/${teamId}`}>
+                          {teamId[0].toUpperCase() + teamId.slice(1)}
+                        </Link>
+                      </div>
+                    </li>
+                    <li>Position<div>{position}</div></li>
+                    <li>PPG<div>{ppg}</div></li>
+                  </ul>
+                  <ul>
+                    <li>APG<div>{apg}</div></li>
+                    <li>SPG<div>{spg}</div></li>
+                    <li>RPG<div>{rpg}</div></li>
+                  </ul>
+                </div>
+              </div>
+            );
+
+          }}
+        >
+        </Route>
 
         <Sidebar
           loading={loading}
