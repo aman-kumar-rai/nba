@@ -3,15 +3,15 @@ const {Link} = require('react-router-dom');
 
 function Navbar(props) {
   return (
-    <nav>
+    <nav id='header-nav'>
       <ul>
-        <li>
+        <li className='nav-item'>
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li className='nav-item'>
           <Link to="/teams">Teams</Link>
         </li>
-        <li>
+        <li className='nav-item'>
           <Link to="/players">Players</Link>
         </li>
       </ul>
