@@ -2,6 +2,12 @@
 
 /* have to find a way to make the .css file as a separate file and not a part of index.html by using internal styling... */
 
+/* i will put the loading component in places where we are waiting for repsonse and for that we will create a separate Loading component... */
+
+/* the main issue may be because the componentWillMount() is called and then render(), and then componentDidMount(), so that can be an issue, or maybe we are changing state in some way that we are unable to see, to we have to figure it out... */
+
+/* so the main bug is render() getting invoked twice, and it is causing issues with both the Home and Players component, we need to fix it... */
+
 *{
   margin-right: 0px;
   margin-left: 0px;
@@ -93,4 +99,49 @@ body{
 .team-logo{
   width: 50px;
   margin-right: 10px;;
+}
+
+/* styles for players and its children */
+
+#players{
+  /* border: 2px solid dodgerblue; */
+
+  /* flex-container part */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* styles for sidebar and its children */
+
+#sidebar-div{
+  /* border: 2px solid red; */
+}
+
+#sidebar-heading{
+  text-align: center;
+
+  font-style: italic;
+  font-weight: 700;
+}
+
+#sidebar-list{
+  padding: 0px;
+  list-style-type: none;
+}
+
+#sidebar-list>li{
+  margin: 4px auto;
+}
+
+#sidebar-list>li>a,
+#sidebar-list>li>a:hover,
+#sidebar-list>li>a:visited,
+#sidebar-list>li>a:active{
+  text-decoration: none;
+  color: darkslategrey;
 }
