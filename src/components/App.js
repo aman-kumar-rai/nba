@@ -19,12 +19,14 @@ function App(props) {
           <Navbar />
         </header>
 
-        <Switch>
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/players" component={Players} />
-          <Route path="/teams" component={Teams} />
-          <Route render={() => <h1>404</h1>} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/players" component={Players} />
+            <Route path="/teams" component={Teams} />
+            <Route render={() => <h1>404</h1>} />
+          </Switch>
+        </main>
       </div>
     </Router>
   );

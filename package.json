@@ -9,8 +9,13 @@
     "start": "webpack-dev-server --open"
   },
   "babel": {
-    "presets": ["@babel/preset-react", "@babel/preset-env"],
-    "plugins": ["@babel/plugin-syntax-dynamic-import"]
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import"
+    ]
   },
   "keywords": [],
   "author": "Aman Kumar",
@@ -19,7 +24,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "slug": "^0.9.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",

@@ -1,3 +1,7 @@
+/* have to write styles to style the currently selected route component differently... */
+
+/* have to find a way to make the .css file as a separate file and not a part of index.html by using internal styling... */
+
 *{
   margin-right: 0px;
   margin-left: 0px;
@@ -13,7 +17,8 @@ body, html{
 }
 
 body{
-  border: 2px solid dodgerblue;
+  /* border: 2px solid dodgerblue; */
+  padding: 5px;
 }
 
 /* styles for the header and its children */
@@ -42,4 +47,50 @@ body{
 .nav-item>a{
   text-decoration: none;
   font-style: italic;
+}
+
+
+/* styles for the main element and its children */
+
+
+/* styles for the home element and its children */
+#home{
+
+  /* flex-container part */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+
+}
+
+#home>h1{
+  text-align: center;
+
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+#home>h3{
+  font-size: 1.2em;
+  font-weight: 200;
+}
+
+#teams{
+
+  /* flex-container part */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
+
+}
+
+.team-logo{
+  width: 50px;
+  margin-right: 10px;;
 }
