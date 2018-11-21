@@ -44,7 +44,7 @@ class Home extends React.Component {
         <h1>National Basketball Academy</h1>
         <h3>Select a Team</h3>
 
-        <div id="teams">
+        <div id="team-logos">
           {this.state.teamNames.map(function(teamName) {
             return (
               <Link to={`/${teamName}`} key={teamName}>

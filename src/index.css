@@ -47,11 +47,25 @@ body {
 }
 
 .nav-item {
+  
 }
 
 .nav-item > a {
+
+  border-radius: 5px;
   text-decoration: none;
   font-style: italic;
+
+  padding: 5px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+
+  transition: all ease-in-out 300ms;
+}
+
+.nav-item>a:hover,
+.nav-item>a:active{
+  box-shadow: 0px 5px 5px rgb(20, 71, 139);
+  transform: translate(0px, -10px);
 }
 
 /* styles for the main element and its children */
@@ -79,7 +93,7 @@ body {
   font-weight: 200;
 }
 
-#teams {
+#team-logos{
   /* flex-container part */
   display: flex;
   flex-direction: row;
@@ -247,4 +261,17 @@ body {
 #sidebar-list > li > a:active {
   text-decoration: none;
   color: darkslategrey;
+}
+
+/* teams component and its children */
+#teams{
+  /* border: 2px solid orange;m */
+  
+  /* flex-container part */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  justify-content: center;
+  align-items: center;
 }
