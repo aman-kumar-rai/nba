@@ -10,7 +10,7 @@ function CustomLink(props) {
   return (
     <Route
       path={to.pathname}
-      children={() => {
+      children={({match}) => {
         return (
           <li style={{listStyleType: 'none', fontWeight: match ? 'bold': 'normal'}}>
             <Link to={to}>{children}</Link>
